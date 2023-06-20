@@ -5,8 +5,10 @@ public class Email {
     private String lastName;
     private String password;
     private String department;
-    private Integer mailboxCapacity;
+    private String email;
+    private Integer mailboxCapacity = 500;
     private String alternateEmail;
+    private String companySuffix = "nexus.com";
 
     //Constructor that receives the firstname and lastname
 
@@ -17,11 +19,13 @@ public class Email {
         //call a method asking for the department
         this.department = setDepartment();
         this.password = generateRandomPassword();
+        this.email = generatedEmail();
 
         System.out.println("Details below");
         System.out.println("Email created for " + this.firstName + " " + this.lastName);
         System.out.println("Department: " + this.department);
         System.out.println("Password: " + this.password);
+        System.out.println("Email: " + this.email);
     }
 
     //Ask for Department
@@ -64,7 +68,62 @@ public class Email {
        return new String(password);
     }
 
+    //Combine elements to generate  email
+    private String generatedEmail(){
+        String email;
+        email = this.firstName.toLowerCase() + "."
+                +this.lastName.toLowerCase() + "@"
+                +department.toLowerCase()+ "." +companySuffix;
+        return email;
+    }
+
+    //Set mailbox capacity
+
+    public void setMailboxCapacity(Integer mailboxCapacity) {
+        this.mailboxCapacity = mailboxCapacity;
+    }
+
     //Set the alternate email
+    public void setAlternateEmail(String alternateEmail) {
+        this.alternateEmail = alternateEmail;
+    }
+
 
     //Change the password
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Integer getMailboxCapacity() {
+        return mailboxCapacity;
+    }
+
+    public String getAlternateEmail() {
+        return alternateEmail;
+    }
+
+    public String getCompanySuffix() {
+        return companySuffix;
+    }
 }

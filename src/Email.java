@@ -14,11 +14,14 @@ public class Email {
         this.firstName = firstName;
         this.lastName = lastName;
 
-        System.out.println("Email created for " + this.firstName + " " + this.lastName);
         //call a method asking for the department
         this.department = setDepartment();
+        this.password = generateRandomPassword();
 
+        System.out.println("Details below");
+        System.out.println("Email created for " + this.firstName + " " + this.lastName);
         System.out.println("Department: " + this.department);
+        System.out.println("Password: " + this.password);
     }
 
     //Ask for Department
@@ -41,8 +44,24 @@ public class Email {
 
     //Generate random password
 
-    private String setPassword() {
+    private String generateRandomPassword() {
+        int length;
+        do {
+            System.out.print("Enter a value between 8 and 30: ");
 
+            Scanner input = new Scanner(System.in);
+            length = input.nextInt();
+        }
+       while(length <8 || length > 30);
+
+       String passwordSet = "A12HGB890JSBHYDTEPIDNLMD@&J)'";
+       char[] password = new char[length];
+       for(int i =0 ; i<length ; i++){
+           int random = (int)(Math.random() *passwordSet .length());
+           password[i] = passwordSet.charAt(random);
+       }
+
+       return new String(password);
     }
 
     //Set the alternate email
